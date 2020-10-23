@@ -1,7 +1,10 @@
 ## Put comments here that give an overall description of what your
+## makeCacheMatrix returns an object which is in essence a cachable matrix. cacheSolve
+## takes a cachable matrix and inverts it if it hasn't already been cached 
 ## functions do
 
 ## Write a short comment describing this function
+## returns a list of setters and getters for the supplied matrix, x
 
 makeCacheMatrix <- function(x = matrix()) {
   I <- NULL
@@ -19,6 +22,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Write a short comment describing this function
+## If the inverse of x is cached then cacheSolve returns the cached value, I. 
+## If the inverse of x isn't cached then cacheSolve inverts x, caches I and returns I
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
@@ -28,7 +33,7 @@ cacheSolve <- function(x, ...) {
     return(I)
   }
   data <- x$get()
-  I <- solve(x)
-  x$setinverse(I, ...)
+  I <- solve(data, ...)
+  x$setinverse(I)
   I
 }
